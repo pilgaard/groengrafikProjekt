@@ -13,4 +13,29 @@ import model.*;
  */
 public class Status {
     
+    private int id;
+    private String statustilstand;
+
+    public Status(int id, String statustilstand) {
+        this.id = id;
+        this.statustilstand = statustilstand;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getStatustilstand() {
+        return statustilstand;
+    }
+
+    public void setStatustilstand(String statustilstand) {
+        this.statustilstand = statustilstand;
+    }
+    
+    
 }

@@ -5,12 +5,10 @@
  */
 package model;
 
-import model.*;
-
 /**
  *
  * @author Emil
  */
-public class Kunde {
+public class Postnummer {
     
 }
