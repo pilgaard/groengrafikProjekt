@@ -23,19 +23,19 @@ public abstract class KundeHandler {
         ResultSet rs = DatabaseHandler.getInstance().select(SQL);
         Kunde kunde = null;
         if (rs.next()) {
-            kunde = new Kunde(rs.getInt("id"), rs.getString("forNavn"), rs.getString("efterNavn"), rs.getString("adresse"), rs.getString("tlfNr"), rs.getString("email"),  ));
+            kunde = new Kunde(rs.getInt("id"), rs.getString("forNavn"), rs.getString("efterNavn"), rs.getString("adresse"), rs.getString("tlfNr"), rs.getString("email"), postnummer, kundetype);
 
         }
         return kunde;
     }
     
-    public static ArrayList<Kunde> hentAlleKunder() throws SQLException {
+    public static ArrayList<Kunde> hentAlleKunder(PostNummer postnummer, Kundetype kundetype) throws SQLException {
         ArrayList<Kunde> kundelist = new ArrayList<>();
         String SQL = "select * from kunde";
         ResultSet rs = DatabaseHandler.getInstance().select(SQL);
         Kunde kunde = null;
         while (rs.next()) {
-            kunde = new Kunde(rs.getInt("id"), rs.getString("forNavn"), rs.getString("efterNavn"), rs.getString("adresse"), rs.getString("tlfNr"), rs.getString("email"));
+            kunde = new Kunde(rs.getInt("id"), rs.getString("forNavn"), rs.getString("efterNavn"), rs.getString("adresse"), rs.getString("tlfNr"), rs.getString("email"), postnummer, kundetype);
             kundelist.add(kunde);
         }
         return kundelist;
