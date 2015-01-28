@@ -13,15 +13,18 @@ public class Kunde {
     
     private int id;
     private String fornavn, efternavn, adresse, tlfNr, email;
-    PostNummer postnummer;
-
-    public Kunde(int id, String fornavn, String efternavn, String adresse, String tlfNr, String email) {
+    private PostNummer postnummer;
+    private Kundetype kundetype;
+    
+    public Kunde(int id, String fornavn, String efternavn, String adresse, String tlfNr, String email, PostNummer postnummer, Kundetype kundetype) {
         this.id = id;
         this.fornavn = fornavn;
         this.efternavn = efternavn;
         this.adresse = adresse;
         this.tlfNr = tlfNr;
         this.email = email;
+        this.postnummer = postnummer;
+        this.kundetype = kundetype;
     }
 
     public int getId() {
@@ -79,6 +82,15 @@ public class Kunde {
     public void setPostnummer(PostNummer postnummer) {
         this.postnummer = postnummer;
     }
+
+    public Kundetype getKundetype() {
+        return kundetype;
+    }
+
+    public void setKundetype(Kundetype kundetype) {
+        this.kundetype = kundetype;
+    }
+    
     
     
     @Override
