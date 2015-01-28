@@ -9,14 +9,13 @@ package model;
  *
  * @author Emil
  */
-public class Status {
+public class Varesalg {
     
-    private int id;
-    private String statustilstand;
+    private int id, antal;
 
-    public Status(int id, String statustilstand) {
+    public Varesalg(int id, int antal) {
         this.id = id;
-        this.statustilstand = statustilstand;
+        this.antal = antal;
     }
 
     public int getId() {
@@ -27,16 +26,16 @@ public class Status {
         this.id = id;
     }
 
-    public String getStatustilstand() {
-        return statustilstand;
+    public int getAntal() {
+        return antal;
     }
 
-    public void setStatustilstand(String statustilstand) {
-        this.statustilstand = statustilstand;
+    public void setAntal(int antal) {
+        this.antal = antal;
     }
     
     @Override
     public String toString(){
-        return id  + statustilstand; 
+        return id +""+ antal;
     }
 }

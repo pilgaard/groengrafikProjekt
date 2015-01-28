@@ -53,5 +53,8 @@ public class Medarbejder {
         this.titel = titel;
     }
     
-    
+    @Override
+    public String toString(){
+        return fornavn+ " " + efternavn + titel; 
+    }
 }

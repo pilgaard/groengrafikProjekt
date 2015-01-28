@@ -5,8 +5,6 @@
  */
 package model;
 
-import model.*;
-
 /**
  *
  * @author Emil
@@ -46,5 +44,8 @@ public class Ordre {
         this.leveringsdato = leveringsdato;
     }
     
-    
+    @Override
+    public String toString(){
+        return id+ " " + oprettelsesdato + " "+ leveringsdato; 
+    }
 }

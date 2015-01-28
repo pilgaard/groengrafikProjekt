@@ -5,8 +5,6 @@
  */
 package model;
 
-import model.*;
-
 /**
  *
  * @author Emil
@@ -15,7 +13,7 @@ public class Kunde {
     
     private int id;
     private String fornavn, efternavn, adresse, tlfNr, email;
-    Postnummer postnummer;
+    PostNummer postnummer;
 
     public Kunde(int id, String fornavn, String efternavn, String adresse, String tlfNr, String email) {
         this.id = id;
@@ -74,14 +72,18 @@ public class Kunde {
         this.email = email;
     }
 
-    public Postnummer getPostnummer() {
+    public PostNummer getPostnummer() {
         return postnummer;
     }
 
-    public void setPostnummer(Postnummer postnummer) {
+    public void setPostnummer(PostNummer postnummer) {
         this.postnummer = postnummer;
     }
     
     
+    @Override
+    public String toString(){
+        return fornavn+ " " + efternavn; 
+    }
     
 }

@@ -5,8 +5,6 @@
  */
 package model;
 
-import model.*;
-
 /**
  *
  * @author Emil
@@ -55,5 +53,8 @@ public class Kundetype {
         this.betalingsbetingelser = betalingsbetingelser;
     }
     
-    
+    @Override
+    public String toString(){
+        return "id: " + id + " " + titel; 
+    }
 }
