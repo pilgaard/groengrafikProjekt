@@ -24,7 +24,7 @@ public abstract class KundeHandler {
         Kunde kunde = null;
         if (rs.next()) {
             PostNummer postNr = new PostNummer(rs.getInt("postNr"), rs.getString("byNavn"));
-            KundeType kundeType = new KundeType(rs.getInt("id"), rs.getInt("rabat"), rs.getString("titel"), rs.getString("betalingsBetingelser"));
+            KundeType kundeType = new KundeType(rs.getInt("id"), rs.getString("titel"), rs.getInt("rabat"),  rs.getString("betalingsBetingelser"));
             kunde = new Kunde(rs.getInt("id"), rs.getString("forNavn"), rs.getString("efterNavn"), rs.getString("adresse"), rs.getString("tlfNr"), rs.getString("email"), postNr, kundeType);
 
         }

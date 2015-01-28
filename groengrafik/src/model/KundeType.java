@@ -14,7 +14,7 @@ public class KundeType {
     private int id, rabat;
     private String titel, betalingsbetingelser;
 
-    public KundeType(int id, int rabat, String titel, String betalingsbetingelser) {
+    public KundeType(int id, String titel, int rabat, String betalingsbetingelser) {
         this.id = id;
         this.rabat = rabat;
         this.titel = titel;

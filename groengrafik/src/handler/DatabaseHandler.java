@@ -27,7 +27,7 @@ public class DatabaseHandler {
     private String username;
     private String password;
 
-    private final static boolean DEBUGMODE = false;
+    private final static boolean DEBUGMODE = true;
 
     private static DatabaseHandler instance;
 
@@ -38,7 +38,7 @@ public class DatabaseHandler {
     private DatabaseHandler() {
 
         /*------------------LOGININFO----------------------------------*/
-        /**/ host = "192.168.0.105";/* Kan erstattes med jepsens.no-ip.biz */
+        /**/ host = "localhost";/* Kan erstattes med jepsens.no-ip.biz */
         /**/ portnr = 3306;                                          /**/
         /**/ database = "groengrafik";                                    /**/
         /**/ username = "schooluser"; //username til database    /**/
