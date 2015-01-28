@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import model.Kunde;
-import model.Kundetype;
+import model.KundeType;
 import model.PostNummer;
 
 /**
@@ -18,18 +18,20 @@ import model.PostNummer;
  */
 public abstract class KundeHandler {
 
-    public static Kunde hentKundeVedTlfNr(String telefon, PostNummer postnummer, Kundetype kundetype) throws SQLException {
+    public static Kunde hentKundeVedTlfNr(String telefon) throws SQLException {
         String SQL = "select * from kunde join kundetype on kunde.KundeTypeid = KundeType.id join postnr on kunde.postNr = postnr.postNr where tlfNr = '"+telefon+"';";
         ResultSet rs = DatabaseHandler.getInstance().select(SQL);
         Kunde kunde = null;
         if (rs.next()) {
-            kunde = new Kunde(rs.getInt("id"), rs.getString("forNavn"), rs.getString("efterNavn"), rs.getString("adresse"), rs.getString("tlfNr"), rs.getString("email"), postnummer, kundetype);
+            PostNummer postNr = new PostNummer(rs.getInt("postNr"), rs.getString("byNavn"));
+            KundeType kundeType = new KundeType(rs.getInt("id"), rs.getInt("rabat"), rs.getString("titel"), rs.getString("betalingsBetingelser"));
+            kunde = new Kunde(rs.getInt("id"), rs.getString("forNavn"), rs.getString("efterNavn"), rs.getString("adresse"), rs.getString("tlfNr"), rs.getString("email"), postNr, kundeType);
 
         }
         return kunde;
     }
     
-    public static ArrayList<Kunde> hentAlleKunder(PostNummer postnummer, Kundetype kundetype) throws SQLException {
+    public static ArrayList<Kunde> hentAlleKunder(PostNummer postnummer, KundeType kundetype) throws SQLException {
         ArrayList<Kunde> kundelist = new ArrayList<>();
         String SQL = "select * from kunde join kundetype on kunde.KundeTypeid = KundeType.id join postnr on kunde.postNr = postnr.postNr; ";
         ResultSet rs = DatabaseHandler.getInstance().select(SQL);
