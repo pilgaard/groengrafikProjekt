@@ -19,7 +19,7 @@ import model.PostNummer;
 public abstract class KundeHandler {
 
     public static Kunde hentKundeVedTlfNr(String telefon, PostNummer postnummer, Kundetype kundetype) throws SQLException {
-        String SQL = "select * from kunde where tlfNr = '"+telefon+"';";
+        String SQL = "select * from kunde join kundetype on kunde.KundeTypeid = KundeType.id join postnr on kunde.postNr = postnr.postNr where tlfNr = '"+telefon+"';";
         ResultSet rs = DatabaseHandler.getInstance().select(SQL);
         Kunde kunde = null;
         if (rs.next()) {
@@ -31,7 +31,7 @@ public abstract class KundeHandler {
     
     public static ArrayList<Kunde> hentAlleKunder(PostNummer postnummer, Kundetype kundetype) throws SQLException {
         ArrayList<Kunde> kundelist = new ArrayList<>();
-        String SQL = "select * from kunde";
+        String SQL = "select * from kunde join kundetype on kunde.KundeTypeid = KundeType.id join postnr on kunde.postNr = postnr.postNr; ";
         ResultSet rs = DatabaseHandler.getInstance().select(SQL);
         Kunde kunde = null;
         while (rs.next()) {
