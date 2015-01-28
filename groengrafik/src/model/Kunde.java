@@ -14,9 +14,9 @@ public class Kunde {
     private int id;
     private String fornavn, efternavn, adresse, tlfNr, email;
     private PostNummer postnummer;
-    private Kundetype kundetype;
+    private KundeType kundetype;
     
-    public Kunde(int id, String fornavn, String efternavn, String adresse, String tlfNr, String email, PostNummer postnummer, Kundetype kundetype) {
+    public Kunde(int id, String fornavn, String efternavn, String adresse, String tlfNr, String email, PostNummer postnummer, KundeType kundetype) {
         this.id = id;
         this.fornavn = fornavn;
         this.efternavn = efternavn;
@@ -83,11 +83,11 @@ public class Kunde {
         this.postnummer = postnummer;
     }
 
-    public Kundetype getKundetype() {
+    public KundeType getKundetype() {
         return kundetype;
     }
 
-    public void setKundetype(Kundetype kundetype) {
+    public void setKundetype(KundeType kundetype) {
         this.kundetype = kundetype;
     }
     
