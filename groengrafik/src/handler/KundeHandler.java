@@ -26,7 +26,6 @@ public abstract class KundeHandler {
             PostNummer postNr = new PostNummer(rs.getInt("zip"), rs.getString("district"));
             KundeType kundeType = new KundeType(rs.getInt("id"), rs.getString("statustitle"), rs.getInt("discount"),  rs.getString("paymentCondition"));
             kunde = new Kunde(rs.getInt("id"), rs.getString("firstName"), rs.getString("lastName"), rs.getString("adress"), rs.getString("phoneNumber"), postNr, kundeType);
-
         }
         return kunde;
     }
