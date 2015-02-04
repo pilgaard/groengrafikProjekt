@@ -1,0 +1,5 @@
+192.168.0.103
+3306
+groengrafik
+schooluser
+schooluser123

@@ -12,17 +12,16 @@ package model;
 public class Kunde {
     
     private int id;
-    private String fornavn, efternavn, adresse, tlfNr, email;
+    private String fornavn, efternavn, adresse, tlfNr;
     private PostNummer postnummer;
     private KundeType kundetype;
     
-    public Kunde(int id, String fornavn, String efternavn, String adresse, String tlfNr, String email, PostNummer postnummer, KundeType kundetype) {
+    public Kunde(int id, String fornavn, String efternavn, String adresse, String tlfNr, PostNummer postnummer, KundeType kundetype) {
         this.id = id;
         this.fornavn = fornavn;
         this.efternavn = efternavn;
         this.adresse = adresse;
         this.tlfNr = tlfNr;
-        this.email = email;
         this.postnummer = postnummer;
         this.kundetype = kundetype;
     }
@@ -67,13 +66,6 @@ public class Kunde {
         this.tlfNr = tlfNr;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     public PostNummer getPostnummer() {
         return postnummer;

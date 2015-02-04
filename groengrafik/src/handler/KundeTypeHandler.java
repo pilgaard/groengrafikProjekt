@@ -20,12 +20,12 @@ public class KundeTypeHandler {
     
     public static ArrayList<KundeType> hentkundetyper() throws SQLException {
         ArrayList<KundeType> ktlist = new ArrayList<>();
-        String SQL = "select * from kundetype;";
+        String SQL = "select * from costumertype;";
         ResultSet rs = DatabaseHandler.getInstance().select(SQL);
         KundeType kundetype = null;
         while (rs.next()) {
             //KundeType(int id, int rabat, String titel, String betalingsbetingelser) 
-            kundetype = new KundeType(rs.getInt("id"), rs.getString ("titel"), rs.getInt("rabat"), rs.getString("betalingsBetingelse")) ;
+            kundetype = new KundeType(rs.getInt("id"), rs.getString ("statustitle"), rs.getInt("discount"), rs.getString("paymentCondition")) ;
             ktlist.add(kundetype);
         }
         return ktlist;

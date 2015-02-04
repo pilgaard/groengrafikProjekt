@@ -19,13 +19,13 @@ import model.PostNummer;
 public abstract class KundeHandler {
 
     public static Kunde hentKundeVedTlfNr(String telefon) throws SQLException {
-        String SQL = "select * from kunde join kundetype on kunde.KundeTypeid = KundeType.id join postnr on kunde.postNr = postnr.postNr where tlfNr = '"+telefon+"';";
+        String SQL = "select * from Costumer join CostumerType on Costumer.costumerTypeId = CostumerType.id join ZipCode on costumer.ZipCodezip = ZipCode.zip where phoneNumber = '"+telefon+"';";
         ResultSet rs = DatabaseHandler.getInstance().select(SQL);
         Kunde kunde = null;
         if (rs.next()) {
-            PostNummer postNr = new PostNummer(rs.getInt("postNr"), rs.getString("byNavn"));
-            KundeType kundeType = new KundeType(rs.getInt("id"), rs.getString("titel"), rs.getInt("rabat"),  rs.getString("betalingsBetingelser"));
-            kunde = new Kunde(rs.getInt("id"), rs.getString("forNavn"), rs.getString("efterNavn"), rs.getString("adresse"), rs.getString("tlfNr"), rs.getString("email"), postNr, kundeType);
+            PostNummer postNr = new PostNummer(rs.getInt("zip"), rs.getString("district"));
+            KundeType kundeType = new KundeType(rs.getInt("id"), rs.getString("statustitle"), rs.getInt("discount"),  rs.getString("paymentCondition"));
+            kunde = new Kunde(rs.getInt("id"), rs.getString("firstName"), rs.getString("lastName"), rs.getString("adress"), rs.getString("phoneNumber"), postNr, kundeType);
 
         }
         return kunde;
@@ -33,11 +33,11 @@ public abstract class KundeHandler {
     
     public static ArrayList<Kunde> hentAlleKunder(PostNummer postnummer, KundeType kundetype) throws SQLException {
         ArrayList<Kunde> kundelist = new ArrayList<>();
-        String SQL = "select * from kunde join kundetype on kunde.KundeTypeid = KundeType.id join postnr on kunde.postNr = postnr.postNr; ";
+        String SQL = "select * from costumer join costumertype on costumer.costumerTypeid = CostumerType.id join ZipCode on costumer.zipCodezip = ZipCode.zip; ";
         ResultSet rs = DatabaseHandler.getInstance().select(SQL);
         Kunde kunde = null;
         while (rs.next()) {
-            kunde = new Kunde(rs.getInt("id"), rs.getString("forNavn"), rs.getString("efterNavn"), rs.getString("adresse"), rs.getString("tlfNr"), rs.getString("email"), postnummer, kundetype);
+            kunde = new Kunde(rs.getInt("id"), rs.getString("firstName"), rs.getString("lastName"), rs.getString("adress"), rs.getString("phoneNumber"), postnummer, kundetype);
             kundelist.add(kunde);
         }
         return kundelist;

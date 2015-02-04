@@ -38,7 +38,7 @@ public class DatabaseHandler {
     private DatabaseHandler() {
 
         /*------------------LOGININFO----------------------------------*/
-        /**/ host = "localhost";/* Kan erstattes med jepsens.no-ip.biz */
+        /**/ host = "192.168.0.103";/* Kan erstattes med jepsens.no-ip.biz */
         /**/ portnr = 3306;                                          /**/
         /**/ database = "groengrafik";                                    /**/
         /**/ username = "schooluser"; //username til database    /**/
