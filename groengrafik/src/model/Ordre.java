@@ -28,9 +28,12 @@ public class Ordre {
 
     public Ordre(String oprettelsesdato ) {
         this.oprettelsesdato = oprettelsesdato;
+        varesalgsListe = new ArrayList<>();
     }
     
     public void addVareTilOrdre(Product product, int antal){
+        System.out.println(product);
+       
         varesalgsListe.add(new Varesalg(antal, product)); 
     }
 

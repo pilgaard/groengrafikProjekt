@@ -24,7 +24,7 @@ public class Salgscontroller {
    private  static Salgscontroller instance;
    private Ordre aktivOrdre;
  
- public Salgscontroller getInstance(){
+ public static Salgscontroller getInstance(){
         if(instance== null){
             instance= new Salgscontroller();
         }  
@@ -46,6 +46,13 @@ public void afslutOrdre(Kunde kunde, String leveringsDato) throws SQLException{
 
 public void tilføjVareTilOrdre(Product product, int antal){
     aktivOrdre.addVareTilOrdre(product, antal);
+    System.out.println("Den er blevet tilføjet");
 }
+
+    public Ordre getAktivOrdre() {
+        return aktivOrdre;
+    }
+
+
 
 }

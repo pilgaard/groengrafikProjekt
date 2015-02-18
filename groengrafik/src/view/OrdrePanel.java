@@ -6,12 +6,17 @@
 
 package view;
 
+import controller.Salgscontroller;
 import handler.KundeHandler;
 import handler.ProductStockHandler;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Kunde;
+import model.Ordre;
+import model.Product;
+import model.Varesalg;
+import utility.DateHelper;
 
 /**
  *
@@ -20,6 +25,7 @@ import model.Kunde;
 public class OrdrePanel extends javax.swing.JPanel {
 
     Kunde aktivKunde;
+    Ordre aktivOrdre;
     
     public OrdrePanel() {
         initComponents();
@@ -27,13 +33,15 @@ public class OrdrePanel extends javax.swing.JPanel {
         loadCombo();
         System.out.println("Combo load");
         aktivKunde = null;
+        Salgscontroller.getInstance().OpretNyOrdre();
+        
     }
     public void loadCombo(){
         try {
             
             for (int i = 0; i < ProductStockHandler.getAllProducts().size(); i++) {
                 
-                vareCombo.addItem(ProductStockHandler.getAllProducts().get(i).toString());
+                vareCombo.addItem(ProductStockHandler.getAllProducts().get(i));
             }
            
         } catch (SQLException ex) {
@@ -51,19 +59,25 @@ public class OrdrePanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        kundeTxt = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         vareCombo = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        vareAntal = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        varesalgsArea = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         kundeArea = new javax.swing.JTextArea();
+
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         jLabel1.setText("Kundeoplysninger");
 
@@ -78,15 +92,23 @@ public class OrdrePanel extends javax.swing.JPanel {
 
         jLabel3.setText("Produkter");
 
+        vareAntal.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        vareAntal.setText("1");
+
         jLabel4.setText("Antal");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        varesalgsArea.setColumns(20);
+        varesalgsArea.setRows(5);
+        jScrollPane1.setViewportView(varesalgsArea);
 
         jLabel5.setText("Ordre");
 
         jButton2.setText("Afgiv Ordre");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Find Kunde");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -120,7 +142,7 @@ public class OrdrePanel extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(kundeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jButton3)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,7 +155,7 @@ public class OrdrePanel extends javax.swing.JPanel {
                                         .addGap(0, 0, Short.MAX_VALUE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(29, 29, 29)
-                                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(vareAntal, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jButton1)))))
                         .addGap(15, 15, 15))
@@ -153,7 +175,7 @@ public class OrdrePanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(kundeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton3))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -164,7 +186,7 @@ public class OrdrePanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(vareCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vareAntal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -178,12 +200,17 @@ public class OrdrePanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        Salgscontroller.getInstance().tilføjVareTilOrdre((Product) vareCombo.getSelectedItem(), Integer.parseInt(vareAntal.getText()));
+        varesalgsArea.setText("");
+        for (Varesalg varesalg : Salgscontroller.getInstance().getAktivOrdre().getVaresalgsListe()) {
+            varesalgsArea.append(varesalg.toString()+"\n");
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         try {
-            aktivKunde = KundeHandler.hentKundeVedTlfNr(jTextField2.getText());
+            aktivKunde = KundeHandler.hentKundeVedTlfNr(kundeTxt.getText());
             if(aktivKunde != null){
                 kundeArea.setText(aktivKunde.toString());
                 
@@ -194,6 +221,23 @@ public class OrdrePanel extends javax.swing.JPanel {
             Logger.getLogger(OrdrePanel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+
+    }//GEN-LAST:event_formComponentShown
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try {
+            Salgscontroller.getInstance().afslutOrdre(aktivKunde, DateHelper.next14Days()[13]);
+            varesalgsArea.setText("");
+            kundeTxt.setText("");
+            kundeArea.setText("");
+            Salgscontroller.getInstance().OpretNyOrdre();
+            aktivKunde = null;
+        } catch (SQLException ex) {
+            Logger.getLogger(OrdrePanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -207,10 +251,10 @@ public class OrdrePanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextArea kundeArea;
+    private javax.swing.JTextField kundeTxt;
+    private javax.swing.JTextField vareAntal;
     private javax.swing.JComboBox vareCombo;
+    private javax.swing.JTextArea varesalgsArea;
     // End of variables declaration//GEN-END:variables
 }

@@ -12,21 +12,6 @@
             <file>file:/Users/Emil/Documents/groengrafikProjekt/groengrafik/src/model/PostNummer.java</file>
         </group>
         <group>
-            <file>file:/Users/chrisjustesen/groengrafikProjekt/groengrafik/src/main/Main.java</file>
-            <file>file:/Users/chrisjustesen/groengrafikProjekt/groengrafik/src/model/KundeType.java</file>
-            <file>file:/Users/chrisjustesen/groengrafikProjekt/groengrafik/src/model/PostNummer.java</file>
-            <file>file:/Users/chrisjustesen/groengrafikProjekt/groengrafik/src/model/Ordre.java</file>
-            <file>file:/Users/chrisjustesen/groengrafikProjekt/groengrafik/src/handler/DatabaseHandler.java</file>
-            <file>file:/Users/chrisjustesen/groengrafikProjekt/groengrafik/src/handler/KundeHandler.java</file>
-            <file>file:/Users/chrisjustesen/groengrafikProjekt/groengrafik/src/model/Status.java</file>
-            <file>file:/Users/chrisjustesen/groengrafikProjekt/groengrafik/src/model/Varesalg.java</file>
-            <file>file:/Users/chrisjustesen/groengrafikProjekt/groengrafik/src/handler/KundeTypeHandler.java</file>
-            <file>file:/Users/chrisjustesen/groengrafikProjekt/groengrafik/src/model/FileHandler.java</file>
-            <file>file:/Users/chrisjustesen/groengrafikProjekt/groengrafik/src/model/Medarbejder.java</file>
-            <file>file:/Users/chrisjustesen/groengrafikProjekt/groengrafik/src/model/Kunde.java</file>
-            <file>file:/Users/chrisjustesen/groengrafikProjekt/groengrafik/src/handler/OrdreHandler.java</file>
-        </group>
-        <group>
             <file>file:/Users/chrisjustesen/groengrafikProjekt/groengrafik/src/model/KundeType.java</file>
             <file>file:/Users/chrisjustesen/groengrafikProjekt/groengrafik/src/handler/ProductStockHandler.java</file>
             <file>file:/Users/chrisjustesen/groengrafikProjekt/groengrafik/src/model/PostNummer.java</file>
@@ -48,6 +33,14 @@
             <file>file:/Users/Emil/Documents/groengrafikProjekt/groengrafik/src/handler/KundeTypeHandler.java</file>
             <file>file:/Users/Emil/Documents/groengrafikProjekt/groengrafik/src/handler/KundeHandler.java</file>
             <file>file:/Users/Emil/Documents/groengrafikProjekt/groengrafik/src/handler/DatabaseHandler.java</file>
+        </group>
+        <group>
+            <file>file:/Users/chrisjustesen/groengrafikProjekt/groengrafik/src/utility/DateHelper.java</file>
+            <file>file:/Users/chrisjustesen/groengrafikProjekt/groengrafik/src/view/MainGUI.java</file>
+            <file>file:/Users/chrisjustesen/groengrafikProjekt/groengrafik/src/model/Ordre.java</file>
+            <file>file:/Users/chrisjustesen/groengrafikProjekt/groengrafik/src/controller/Salgscontroller.java</file>
+            <file>file:/Users/chrisjustesen/groengrafikProjekt/groengrafik/src/view/OrdrePanel.java</file>
+            <file>file:/Users/chrisjustesen/groengrafikProjekt/groengrafik/src/handler/OrdreHandler.java</file>
         </group>
     </open-files>
 </project-private>

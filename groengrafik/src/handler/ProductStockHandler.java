@@ -33,4 +33,18 @@ public abstract class ProductStockHandler {
         return productList;
         
     }
+    
+    public static Product getProduct(String name) throws SQLException{
+        String sql = "SELECT * FROM ProductStock where ProductStock.pName = name";
+        ResultSet rs = DatabaseHandler.getInstance().select(sql);
+        Product product = null;
+        
+             while(rs.next()){
+            product = new Product(rs.getInt("id"), rs.getString("pName"), rs.getString("description"), rs.getInt("amount"), rs.getInt("minAmount"), rs.getInt("productionTime"));
+            
+            
+            
+        }
+             return product;
+    }
 }
