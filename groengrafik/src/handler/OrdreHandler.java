@@ -18,13 +18,13 @@ import model.Varesalg;
  */
 public class OrdreHandler {
     
-    public static void OpretOrdre(Ordre ordre) throws SQLException {
+    public static Ordre OpretOrdre(Ordre ordre) throws SQLException {
         
         
         String sql = "insert into ProductRequest(deadline, creationDate, stateid, employeeid,customerid)"
                 + "values('"+ordre.getLeveringsdato()+"','"+ordre.getOprettelsesdato()+"',1,1,"+ordre.getKunde().getId()+");";
         DatabaseHandler.getInstance().execute(sql);
-        
+         return ordre;
     }
     
     public static void tilføjvaretilordre (int ordreid, Varesalg varesalg) throws SQLException{
