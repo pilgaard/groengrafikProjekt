@@ -25,7 +25,7 @@ public class Ordre {
     }
     
     public void addVareTilOrdre(Product product, int antal){
-        varesalgsListe.add(new Varesalg(antal, product));
+        varesalgsListe.add(new Varesalg(antal, product)); 
     }
 
     public int getId() {
