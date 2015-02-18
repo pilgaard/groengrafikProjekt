@@ -8,8 +8,6 @@ package controller;
 
 import handler.OrdreHandler;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Calendar;
 import model.Kunde;
 import model.Ordre;
 import model.Product;
