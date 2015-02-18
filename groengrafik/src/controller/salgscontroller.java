@@ -6,18 +6,21 @@
 
 package controller;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import model.Kunde;
+import model.Ordre;
+import model.Varesalg;
 
 /**
  *
  * @author Maja
  */
 public class salgscontroller {
- /*
-    public void OpretOrdre (Kunde kunde) {
-       Ordre ordre = new Ordre(Calendar.getInstance(),)
-        
+ 
+    public void OpretOrdre (ArrayList<Varesalg> varesalgsListe, Kunde kunde) {
+       Ordre ordre = new Ordre(Calendar.getInstance()+"",Calendar.getInstance()+"",varesalgsListe,kunde);        
     }
-    */
+    
     
 }
