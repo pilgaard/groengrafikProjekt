@@ -17,7 +17,7 @@ import model.Ordre;
 public class OrdreHandler {
     
     public static void OpretOrdre(Ordre ordre) throws SQLException {
-        Ordre NyOrdre = new Ordre(2, null, null);
+        Ordre NyOrdre = new Ordre(0, null, null);
         
         
         
