@@ -26,25 +26,13 @@ public class Ordre {
         this.kunde = kunde;
     }
 
-    public Ordre(String oprettelsesdato, String leveringsdato, ArrayList<Varesalg> varesalgsListe, Kunde kunde) {
+    public Ordre(String oprettelsesdato ) {
         this.oprettelsesdato = oprettelsesdato;
-        this.leveringsdato = leveringsdato;
-        this.varesalgsListe = varesalgsListe;
-        this.kunde = kunde;
     }
-    
-    
     
     public void addVareTilOrdre(Product product, int antal){
         varesalgsListe.add(new Varesalg(antal, product)); 
     }
-
-    public Ordre(String oprettelsesdato, String leveringsdato) {
-        this.oprettelsesdato = oprettelsesdato;
-        this.leveringsdato = leveringsdato;
-    }
-    
-    
 
     public int getId() {
         return id;
@@ -61,7 +49,10 @@ public class Ordre {
     public Kunde getKunde() {
         return kunde;
     }
-    
+
+    public void setKunde(Kunde kunde) {
+        this.kunde = kunde;
+    }    
 
     public String getOprettelsesdato() {
         return oprettelsesdato;
