@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Emil
@@ -13,11 +15,17 @@ public class Ordre {
     
     private int id;
     private String oprettelsesdato, leveringsdato;
+    private ArrayList<Varesalg> varesalgsListe; 
 
     public Ordre(int id, String oprettelsesdato, String leveringsdato) {
         this.id = id;
         this.oprettelsesdato = oprettelsesdato;
         this.leveringsdato = leveringsdato;
+        varesalgsListe = new ArrayList<>();
+    }
+    
+    public void addVareTilOrdre(Product product, int antal){
+        varesalgsListe.add(new Varesalg(antal, product));
     }
 
     public int getId() {
