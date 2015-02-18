@@ -28,7 +28,7 @@ public class OrdreHandler {
     }
     
     public static void tilføjvaretilordre (int ordreid, Varesalg varesalg) throws SQLException{
-        String sql = "insert into productrequestline(amount, Product.id,productrequestordernumber)"+
+        String sql = "insert into productrequestline(amount, productid,productrequestordernumber)"+
                 "values ("+varesalg.getAntal()+","+varesalg.getProduct().getId()+","+ordreid+");";
         DatabaseHandler.getInstance().execute(sql);
         }
