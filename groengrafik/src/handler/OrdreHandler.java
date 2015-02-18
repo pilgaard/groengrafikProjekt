@@ -6,8 +6,10 @@
 
 package handler;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import model.Ordre;
+import model.Varesalg;
 
 
 /**
@@ -17,16 +19,18 @@ import model.Ordre;
 public class OrdreHandler {
     
     public static void OpretOrdre(Ordre ordre) throws SQLException {
-        Ordre NyOrdre = new Ordre(0, null, null);
         
         
-        
-        String sql = "insert into ProductRequest"
-                + "values('"+NyOrdre.getId()+"','"
-                + ""+NyOrdre.getLeveringsdato()+"','"
-                + ""+NyOrdre.getOprettelsesdato()+"''";
-        
+        String sql = "insert into ProductRequest(deadline, creationDate, stateid, employeeid,customerid)"
+                + "values('"+ordre.getLeveringsdato()+"','"+ordre.getOprettelsesdato()+"',1,1,"+ordre.getKunde().getId()+");";
         DatabaseHandler.getInstance().execute(sql);
+        
     }
     
-}
+    public static void tilføjvaretilordre (int ordreid, Varesalg varesalg) throws SQLException{
+        String sql = "insert into productrequestline(amount, Product.id,productrequestordernumber)"+
+                "values ("+varesalg.getAntal()+","+varesalg.getProduct().getId()+","+ordreid+");";
+        DatabaseHandler.getInstance().execute(sql);
+        }
+    }
+

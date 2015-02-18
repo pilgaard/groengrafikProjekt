@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Emil
@@ -13,12 +15,36 @@ public class Ordre {
     
     private int id;
     private String oprettelsesdato, leveringsdato;
+    private ArrayList<Varesalg> varesalgsListe; 
+    private Kunde kunde;
 
-    public Ordre(int id, String oprettelsesdato, String leveringsdato) {
+    public Ordre(int id, String oprettelsesdato, String leveringsdato, Kunde kunde) {
         this.id = id;
         this.oprettelsesdato = oprettelsesdato;
         this.leveringsdato = leveringsdato;
+        varesalgsListe = new ArrayList<>();
+        this.kunde = kunde;
     }
+
+    public Ordre(String oprettelsesdato, String leveringsdato, ArrayList<Varesalg> varesalgsListe, Kunde kunde) {
+        this.oprettelsesdato = oprettelsesdato;
+        this.leveringsdato = leveringsdato;
+        this.varesalgsListe = varesalgsListe;
+        this.kunde = kunde;
+    }
+    
+    
+    
+    public void addVareTilOrdre(Product product, int antal){
+        varesalgsListe.add(new Varesalg(antal, product)); 
+    }
+
+    public Ordre(String oprettelsesdato, String leveringsdato) {
+        this.oprettelsesdato = oprettelsesdato;
+        this.leveringsdato = leveringsdato;
+    }
+    
+    
 
     public int getId() {
         return id;
@@ -27,6 +53,15 @@ public class Ordre {
     public void setId(int id) {
         this.id = id;
     }
+
+    public ArrayList<Varesalg> getVaresalgsListe() {
+        return varesalgsListe;
+    }
+
+    public Kunde getKunde() {
+        return kunde;
+    }
+    
 
     public String getOprettelsesdato() {
         return oprettelsesdato;

@@ -12,11 +12,19 @@ package model;
 public class Varesalg {
     
     private int id, antal;
+    private Product product;
 
-    public Varesalg(int id, int antal) {
+    public Varesalg(int id, int antal, Product product) {
         this.id = id;
         this.antal = antal;
+        this.product = product;
     }
+
+    public Varesalg(int antal, Product product) {
+        this.antal = antal;
+        this.product = product;
+    }
+    
 
     public int getId() {
         return id;
@@ -33,9 +41,14 @@ public class Varesalg {
     public void setAntal(int antal) {
         this.antal = antal;
     }
+
+    public Product getProduct() {
+        return product;
+    }
+    
     
     @Override
     public String toString(){
-        return id +""+ antal;
+        return antal + " " + product.getpName();
     }
 }
