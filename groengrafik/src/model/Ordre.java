@@ -28,6 +28,13 @@ public class Ordre {
         varesalgsListe.add(new Varesalg(antal, product)); 
     }
 
+    public Ordre(String oprettelsesdato, String leveringsdato) {
+        this.oprettelsesdato = oprettelsesdato;
+        this.leveringsdato = leveringsdato;
+    }
+    
+    
+
     public int getId() {
         return id;
     }
