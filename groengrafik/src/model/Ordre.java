@@ -16,12 +16,14 @@ public class Ordre {
     private int id;
     private String oprettelsesdato, leveringsdato;
     private ArrayList<Varesalg> varesalgsListe; 
+    private Kunde kunde;
 
-    public Ordre(int id, String oprettelsesdato, String leveringsdato) {
+    public Ordre(int id, String oprettelsesdato, String leveringsdato, Kunde kunde) {
         this.id = id;
         this.oprettelsesdato = oprettelsesdato;
         this.leveringsdato = leveringsdato;
         varesalgsListe = new ArrayList<>();
+        this.kunde = kunde;
     }
     
     public void addVareTilOrdre(Product product, int antal){
@@ -35,6 +37,15 @@ public class Ordre {
     public void setId(int id) {
         this.id = id;
     }
+
+    public ArrayList<Varesalg> getVaresalgsListe() {
+        return varesalgsListe;
+    }
+
+    public Kunde getKunde() {
+        return kunde;
+    }
+    
 
     public String getOprettelsesdato() {
         return oprettelsesdato;
