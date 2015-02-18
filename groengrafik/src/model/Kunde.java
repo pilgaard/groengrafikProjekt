@@ -87,7 +87,7 @@ public class Kunde {
     
     @Override
     public String toString(){
-        return fornavn+ " " + efternavn; 
+        return fornavn+ " " + efternavn+"\n"+adresse+"\n"+postnummer; 
     }
     
 }

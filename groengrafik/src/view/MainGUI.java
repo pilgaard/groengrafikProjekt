@@ -6,7 +6,13 @@
 
 package view;
 
+import handler.DatabaseHandler;
 import java.awt.CardLayout;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import utility.PageHandler;
 
 /**
@@ -20,9 +26,25 @@ public class MainGUI extends javax.swing.JFrame {
     
     public MainGUI() {
         initComponents();
-        
+        try {
+            DatabaseHandler.getInstance().openConn(null);
+            System.out.println("Connection til database oprettet");
+        } catch (SQLException ex) {
+            Logger.getLogger(MainGUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(MainGUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(MainGUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(MainGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
         ph = new PageHandler((CardLayout)jPanel1.getLayout(),jPanel1);
+        ordrePanel = new OrdrePanel();
+        setSize(660,600);
         ph.addPage(ordrePanel, "OrdrePanel");
+        System.out.println("OrdrePanel tilføjet");
+        ph.show("OrdrePanel");
+        System.out.println("Vis OrdrePanel");
     }
 
     /**

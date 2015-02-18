@@ -1,5 +1,5 @@
-192.168.0.103
+127.0.0.1
 3306
 groengrafik
-schooluser
-schooluser123
+root
+
